@@ -6,7 +6,7 @@ var path = require('path');
 var os = require('os');
 var StringDecoder = require('string_decoder').StringDecoder;
 var fdSlicer = require('fd-slicer');
-var gzip = require('zlib');
+var zlib = require('zlib');
 
 var START = 0;
 var START_BOUNDARY = 1;
@@ -179,8 +179,9 @@ Form.prototype.parse = function(req, cb) {
 
   //支持gzip
   if(/gzip/i.test(req.headers['content-encoding'])){
-      req.pipe(zlib.createGunzip());
-      gunzip.pipe(self);
+    var gunzip = zlib.createGunzip();
+    req.pipe(gunzip);
+    gunzip.pipe(self);
   }
   else{
       req.pipe(self);

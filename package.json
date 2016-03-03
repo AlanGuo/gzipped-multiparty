@@ -1,6 +1,6 @@
 {
   "name": "gzipped-multiparty",
-  "version": "4.1.3",
+  "version": "4.1.5",
   "description": "multipart/form-data parser which supports streaming",
   "repository": {
     "type": "git",
